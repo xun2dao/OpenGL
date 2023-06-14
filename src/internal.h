@@ -1,7 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
-typedef void (*CursorCallbackFn)(GLFWwindow *, double, double);
+typedef void (*CursorCallbackFn)(GLFWwindow *, double, double); // 定义函数类型
 typedef void (*KeyCallbackFn)(GLFWwindow *, int, int, int, int);
 
 struct GLFWCallback {
@@ -9,7 +9,7 @@ struct GLFWCallback {
   KeyCallbackFn _key_callback;
 };
 
-extern struct GLFWCallback _glfw_callback;
+extern struct GLFWCallback _glfw_callback; // 定义一个全局变量
 
 #ifdef OPENGL_DEBUG
 #define DEBUG_ASSERT(x, ...)                                                   \

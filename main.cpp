@@ -1,32 +1,34 @@
+#include <GLFW/glfw3.h>
 #include <iostream>
+#include <new>
 
+#define DEBUG_ASSERT(x, ...)                                                   \
+  if (!(x)) {                                                                  \
+    std::cerr << __VA_ARGS__;                                                  \
+  }
 
-typedef void (*Callback)(int, void*); // 定义特定函数指针
-
-struct GLFWwindow{
-    struct { // 内置匿名结构体和对象
-        bool surface;
-        int platformId;
-        Callback callback;
-
-    }hint;
-
-};
-static GLFWwindow _glfw;
-
-void GetPlatform(int platform , void *){
-        std::cout<< "GetPlatform"<<std::endl;
-}
-
+static const int Width = 800;
+static const int Height = 600;
+static const char *Title = "OpenGL";
 
 int main() {
   // 1. 初始化
   // 2. 创建窗口
   // 3. 创建上下文
-  std::cout << "Hello,World" << std::endl;
+  //
+  int success = glfwInit();
+  DEBUG_ASSERT(success, "GLFW Init Failed!");
 
-  _glfw.hint.callback = GetPlatform;
-  _glfw.hint.callback(1,nullptr);
+  GLFWwindow *window = glfwCreateWindow(Width, Height, Title, nullptr, nullptr);
+  DEBUG_ASSERT(window, "Create Window Failed.");
+
+  glfwMakeContextCurrent(window);
+
+  while (!glfwWindowShouldClose(window)) {
+
+    glfwPollEvents();
+    glfwSwapBuffers(window);
+  }
 
   return 0;
 }

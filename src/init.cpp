@@ -6,7 +6,7 @@ struct GLFWCallback _glfw_callback;
 
 void CursorCallback(GLFWwindow *window, double x, double y) {
 #ifdef OPENGL_DEBUG
-  std::cout << "Cursor Pos: [" << x << ", " << y << "]"<<std::endl;
+  std::cout << "Cursor Pos: [" << x << ", " << y << "]" << std::endl;
 #endif
 }
 

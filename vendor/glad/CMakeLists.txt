@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(glad)
 
-option(GLAD_FOUND "determine the existence of glad" ON)
+option(GLAD_FcUND "determine the existence of glad" ON)
 
 
 aux_source_directory("src" GLAD_SRC)

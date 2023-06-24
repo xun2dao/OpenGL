@@ -1,6 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
-
+#include<iostream>
 typedef void (*CursorCallbackFn)(GLFWwindow *, double, double); // 定义函数类型
 typedef void (*KeyCallbackFn)(GLFWwindow *, int, int, int, int);
 
@@ -17,3 +17,7 @@ extern struct GLFWCallback _glfw_callback; // 定义一个全局变量
     std::cerr << __VA_ARGS__;                                                  \
   }
 #endif
+
+
+
+

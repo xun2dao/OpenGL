@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.22)
 project(OpenGL)
 
 
-
-set(CMAKE_MODULE_PATH "${CMAKE_PROJECT_NAME}/GLFW/CMake")
+# find package
+set(CMAKE_MODULE_PATH "${CMAKE_PROJECT_NAME}/vendor/GLFW/CMake")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(glfw3 REQUIRED)
@@ -13,8 +13,13 @@ add_subdirectory("vendor/glad")
 
 add_compile_definitions(OPENGL_DEBUG)
 add_compile_definitions(GLFW_INCLUDE_NONE)
+add_compile_definitions(CMAKE_BUILD_TYPE "Debug")
 
-aux_source_directory("src" SRC_FILES)
+add_compile_definitions(PLATFORM_WINDOW_GLFW) # 使用glfw生成窗口
+
+file(GLOB_RECURSE SRC_FILES "src/*.cpp")
+message("files : ${SRC_FILES}")
+# aux_source_directory("src/" SRC_FILES)
 
 add_executable(OpenGL ${SRC_FILES})
 
@@ -31,4 +36,3 @@ if(${glfw3_FOUND})
 else(${glfw3_FOUND})
     message(FATAL_ERROR "glfw3 not found")
 endif()
-     
